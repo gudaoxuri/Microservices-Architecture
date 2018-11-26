@@ -65,6 +65,7 @@ Service Mesh是微服务的发展方向，笔者所在的团队也有一定的�
 
 ### 版权协议
 
-!\[知识共享许可协议\]\([https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)\)  
+![&#x77E5;&#x8BC6;&#x5171;&#x4EAB;&#x8BB8;&#x53EF;&#x534F;&#x8BAE;](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)
+
 本书采用 [知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议](http://creativecommons.org/licenses/by-nc-sa/4.0/) 进行许可。
 
