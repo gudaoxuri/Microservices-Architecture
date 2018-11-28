@@ -2,7 +2,7 @@
 
 单体架构（Monolithic Architecture）是一种将所有功能打包在一个容器中运行的设计风格，一个实例中集成了一个系统的所有功能。通过负载均衡软件/设备实现多实例调用。
 
-![单体架构示例](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/monolithic-architecture.svg?sanitize=true)
+![&#x5355;&#x4F53;&#x67B6;&#x6784;&#x793A;&#x4F8B;](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/monolithic-architecture.svg?sanitize=true)
 
 上图为典型的单体架构示例，这种架构下我们多用Tomcat、JBoss或Weblogic做为服务容器，一个系统部署多个实例，负载均衡多通过随机或IP Hash等规则将终端请求路由到不同的实例。
 
@@ -17,7 +17,7 @@
 * **不利于安全管理** 所有开发人员都拥有全量代码，在安全管控上存在很大风险，尤其是对用大量外包人员或新招大量开发人员的团队。个别公司要求员工用虚拟桌面（一种集中存储、操作受限的虚拟环境）以避免代码外流，但这种开发体验差、受员工抵触，故普及度极低
 
 > ⚠ 这些问题目前读者只要有一定印象即可，后续会结合实例进一步说明。
-
+>
 > ❓ 用辨证的思维看待技术
 >
 > 相信有部分读者从业不久，听说过微服务，想着用微服务改造现有的单体架构系统，但这之中却忽略了架构的适用性。 不要为架构而架构，以笔者的经验看单体架构在初创公司、中小型系统、产品试错等场景下开发的周期快、对开发人员的技能要求低而任然被广泛地采用。 本书的目的不是推销微服务，如果您看完本书从而打消微服务化改造那是笔者值得欣慰的一件事。
