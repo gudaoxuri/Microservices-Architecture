@@ -9,3 +9,7 @@
 * [SOA的演进](interpretation-of-service-architecture/soa.md)
 * [微服务的兴起](interpretation-of-service-architecture/microservices.md)
 
+## 项目介绍
+
+* [项目背景](project-introduction/xiang-mu-bei-jing.md)
+
