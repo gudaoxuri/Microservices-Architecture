@@ -12,4 +12,5 @@
 ## 项目介绍
 
 * [项目背景](project-introduction/background.md)
+* [项目背景](project-introduction/monolithic-architecture-version.md)
 
