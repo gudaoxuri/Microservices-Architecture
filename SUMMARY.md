@@ -11,5 +11,5 @@
 
 ## 项目介绍
 
-* [项目背景](project-introduction/xiang-mu-bei-jing.md)
+* [项目背景](project-introduction/background.md)
 

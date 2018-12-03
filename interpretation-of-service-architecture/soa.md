@@ -2,11 +2,11 @@
 
 在了解到单体架构的这些不足后大家会自然而然地想到做如下的拆分：
 
-![&#x5355;&#x4F53;&#x62C6;&#x5206;](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/monolithic-split.svg?sanitize=true)
+![&#x5355;&#x4F53;&#x62C6;&#x5206;](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/monolithic-split.png?sanitize=true)
 
 我们可以从业务上将不同的模块拆分到不同的系统中，模块1、模块2划到A系统，其它的模块划到B系统， 我们还可以将同一模块进一步拆分，比如模块3有Controller层和Service层，那就可以按技术分层将一个模块拆分成多个。 而无论我们怎么拆分都会面临一个问题：拆分后的服务怎么调度？这时就该介绍一下SOA了。
 
-![SOA](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/soa.svg?sanitize=true)
+![SOA](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/soa.png?sanitize=true)
 
 🔆 SOA（Service-Oriented Architecture）是一种分布式服务架构的常见方式：提供一种被各个服务单元/系统彼此认可的协议进行数据通讯，进而实现跨服务单元/系统交互的能力。 [详见此处](https://en.wikipedia.org/wiki/Service-oriented_architecture)
 
