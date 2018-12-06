@@ -14,3 +14,7 @@
 * [项目背景](project-introduction/background.md)
 * [单体架构实现](project-introduction/monolithic-architecture-version.md)
 
+## 微服务化之技术架构
+
+* [服务怎么划分](microservices-technical-architecture/services-division.md)
+

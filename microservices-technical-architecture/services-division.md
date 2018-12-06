@@ -42,6 +42,38 @@
 
 团队的整体能力是要考虑一个重要因素，一般而言团队的整体能力与服务的数量成正比，反之极容易导致架构失控。
 
+## 领域检查
+
+现在看起来边界更清晰：明确了系统构成及各系统内的服务，但别急。由于我们这个示例比较单一，所以各系统的业务域及服务的业务边界比较明确，但在有多条产品线、多项目团队合作研发的场景下极容易出现某些功能看上去在哪个产品中做都可以的情况，这时如何划分边界就比较棘手了。
+
+这种情况下我们可以引入领域模型。使用领域模型为服务的业务划分提供指导是个很好的开始，国内也有不少优秀的实践[Jdon](http://www.jdon.com/)。
+
+>🔆 领域驱动设计：DDD（Domain-driven design）是一套综合软件系统分析和设计的面向对象建模方法。[详见此处](https://en.wikipedia.org/wiki/Domain-driven_design)
+
+下图笔者所服务公司资产端数据结构的领域模型示例，通过领域建模可以很清楚地明确各实体对象的归属，进而确定业务服务的边界。
+
+![DDD示例](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-division-ddd.png?sanitize=true)
+
+领域建模对服务的划分有非常重要的指导意义，即使我们不用DDD也应该多少了解领域模型设计，反观国内IT企业大家对这块太不重视了，举一个例子：某国内知名的垂直电商公司的CTO公开讲他们订单与优惠券的设计演进，第一个版本核心结构如下：
+
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-division-ddd-analysis1.png?sanitize=true)
+
+这一版很简单也很好理解，问题在于它将优惠券与商铺绑定，但优惠券有针对商品的、商铺的和平台的，比如X商铺A商品5折、X商铺满100减20，平台满200减20等，上面的结构明显不符合要求，所以他们改成如下结构：
+
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-division-ddd-analysis2.png?sanitize=true)
+
+做法是将订单拆分成针对商品、店铺及平台（支付）的三类，一个支付订单可以包含一个或多个店铺订单，一个店铺订单可以包含一个或多个商品订单，问题解决了吗？的确从功能上看是满足了，但这种做法的后患是订单与优惠券完全绑定了，订单被优惠券绑架了，如果业务上又出现了针对不同类目的优惠（这很常见）那是不是又要加入类目级订单？
+
+这就是典型的缺乏领域建模思维的产物，如果用领域建模会是怎样？从领域角度看这种做法是完全错误的，订单与优惠券分属于两个领域，一个是核心域（暂且这么称呼），另一个是运营活动域，原则上运营活动域是可选的，不应该为支撑可选域而对核心域做过多的侵入（从1个订单变成3个订单），所以理想情况下优惠券对订单的支持应该只是在运营活动域中处理。理解了这个后模型很简单：
+
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-division-ddd-analysis3.png?sanitize=true)
+
+引入一张订单优惠券的关联表（Order Coupon）即可，核心域只关注订单，各类活动的处理在运营活动域中操作。
+
+就这么简单？是的，从领域处理上就是这样，但要支持我们的需求需要有些特殊的处理，在关联表要引入事务ID，同一次操作事务ID相同。相关的操作逻辑如有兴趣欢迎到互动论坛中留言讨论。
+
+领域检查可以为我们的服务划分提供方向性的指导，使服务划分更明确、各有规划性。
+
 
 
 
