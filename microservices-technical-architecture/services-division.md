@@ -132,10 +132,38 @@ DAG在数学上是有向无环图，指从任何一点出发都不会回到这�
 
 ## 性能分布检查
 
+对于特别耗资源的操作应尽量独立。比如上文提到车贷通使用了bcrypt（一种基于Blowfish算法的散列函数，类似MD5,但Hash时极为消耗CPU），导致系统注册服务的TPS严重下降，这时就应该考虑把这个签名操作对独立成服务，为这一服务部署更多节点，并且可以为其独立购买计算优化型云主机。
+
+车贷通需要近实时地同步GPS追踪器厂商的GPS轨迹数据，这一操作本应归属于贷后服务的贷后数据采集，但由于此操作对TPS、IO要求极高，会占用贷后服务绝大部分的资源，可重要性却次之，即使此功能临时下线对主体业务也不会有太大影响，所以有必要独立成服务，因此我们的服务划分又有新的变化：
+
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-division6.png?sanitize=true)
+
 ## 稳定（易变）性检查
+
+一个服务中如存在稳定和不稳定的模块，应该将两者拆分。
+笔者曾经为某集团的客服系统做服务化改造，此系统有很多诸如本月套餐使用情况、销售品、IVR信息、通话足迹、故障分析等功能块，各个功能块要求可以动态添加、修改，根据客户画像、历史轨迹及当前资产等情况智能推测客户呼叫的意图，动态地为客服展现相关信息，如下图：
+
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-division-stability1.png?sanitize=true)
+
+为此在设计把其独立成Widget服务，它的变更不会影响kernel服务。
+
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-division-stability2.png?sanitize=true)
+
+车贷通运营过程中发现接入的短信服务商及三要素验证供应商响应速度太慢且不稳定，现代软件研发有太多的三方服务可选择，合理地利用三方服务可以快速高效地构建服务，但同时也带来如何管理、监控这些服务的问题，常见如短信，国内有很多供应商，提供了多样化的服务，但由于政策、三大运营商策略的关系往往没有一家短信供应商可以保证100%的触达率，所以我们在项目中往往会接入多个供应商，以一定的策略确保最大化触达，另外短信行业水很深，一般我们都会自己留一份发送记录以便做财务核对。电子合同、活体检测等作为贷款流程必不可少的一块，如果出现服务不可用对车贷通是致命的，因此也需要有多个供应商做备份有自己的调用记录。
+
+所以这些三方服务都应该独立，服务对外提供相对统一的接口，服务内部去对接不同的三方服务，消化不同三方服务在接口、规则上的差异，确保一个三方服务不可用时可以自动切换到备用三方服务上。并且这些服务与业务无关，非常适合封装成公共服务，故我们的服务划分又可修改成：
+
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-division7.png?sanitize=true)
 
 ## 调用链检查
 
+服务间调用有IO消耗且不易追踪，应控制调用链路的长度。以笔者的经验，一般的请求—响应类操作应该在4层以内比较合适，比如：应用服务网关——>业务服务——>（业务）数据服务——>公共服务。
+
+当然调用链路的长短也要看情况，比如笔者设计过的风控系统（见下图），它的一次风控决策最多就需要6层调用，请求从网关Gateway路由到流量控制器（Flow Controller），流量控制器负责在合适的时机发送请求事件到决策处理器（Decision Processor），决策处理器根据决策规则要求发布因子获取事件给因子服务（Factor）,因子服务返回对应的因子数据给决策处理器以进行规则运算并异步回调业务请求方。但这一流程中如果因子数据不存在则因子服务要先请求数据采集分发器（Collect Dispatcher），数据采集分发器分发要采集的数据给对应的采集器，采集完成后逐级返回。这一系统通过MQ实现完全异步化处理，多层调用是为服务解耦，符合上述服务划分的要求，同时又因为是异步回调的方式，对实时性要求不高，所以这样的调用链路是可接受的。
+
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-division-invoke1.png?sanitize=true)
+
+**服务的划分是微服务设计的第一步，也是其成败的关键。正如笔者一直强调架构不应只聚焦于技术，人的因素，团队、项目的因素往往更重要，所以实践时遵循上述原则的同时更要灵活机动，因地制宜，原则指明的是大的方向，但具体到度的把握才是对架构师能力及经验的考验所在。**
 
 
 

@@ -17,4 +17,5 @@
 ## 微服务化之技术架构
 
 * [服务怎么划分](microservices-technical-architecture/services-division.md)
+* [接口协议选择](microservices-technical-architecture/api-protocol-select.md)
 
