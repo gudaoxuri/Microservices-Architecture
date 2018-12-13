@@ -18,6 +18,6 @@
 
 * [服务怎么划分](microservices-technical-architecture/services-division.md)
 * [接口协议选择](microservices-technical-architecture/api-protocol-select.md)
-* [编制与协同设计](microservices-technical-architecture/service-governance.md)
+* [编制与协同设计](microservices-technical-architecture/services-invoke.md)
 * [事件驱动架构](microservices-technical-architecture/eda.md)
 
