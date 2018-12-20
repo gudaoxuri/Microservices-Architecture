@@ -24,4 +24,5 @@
 * [统一配置中心](microservices-technical-architecture/services-config.md)
 * [服务熔断处理](microservices-technical-architecture/services-circuit.md)
 * [可降级设计](microservices-technical-architecture/services-fallback.md)
+* [缓存设计](microservices-technical-architecture/cache.md)
 
