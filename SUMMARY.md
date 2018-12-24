@@ -25,4 +25,5 @@
 * [服务熔断处理](microservices-technical-architecture/services-circuit.md)
 * [可降级设计](microservices-technical-architecture/services-fallback.md)
 * [缓存设计](microservices-technical-architecture/cache.md)
+* [分布式锁使用](microservices-technical-architecture/lock.md)
 
