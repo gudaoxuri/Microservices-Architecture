@@ -27,4 +27,5 @@
 * [缓存设计](microservices-technical-architecture/cache.md)
 * [分布式锁使用](microservices-technical-architecture/lock.md)
 * [分布式事务实现](microservices-technical-architecture/transaction.md)
+* [幂等与去重处理](microservices-technical-architecture/idempotent.md)
 
