@@ -51,7 +51,7 @@ kinds.map{
 
 上面是自己实现一个延迟时间可修改的延迟队列内核的简化版本，是以Redis的zset结构为核心构建。
 
->❓ 是否使用Redis的Key过期通知(https://redis.io/topics/notifications)来实现延迟？
+>❓ 是否可以使用Redis的Key过期通知 (https://redis.io/topics/notifications) 来实现延迟？
 >
 > 答案是不可以。
 >
