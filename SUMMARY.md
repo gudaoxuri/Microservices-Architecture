@@ -29,4 +29,7 @@
 * [分布式事务实现](microservices-technical-architecture/transaction.md)
 * [幂等与去重处理](microservices-technical-architecture/idempotent.md)
 * [全局ID策略](microservices-technical-architecture/id-generated.md)
+* [全局ID策略](microservices-technical-architecture/id-generated.md)
+* [顺序处理](microservices-technical-architecture/sequential-processing.md)
+* [延迟队列](microservices-technical-architecture/delay_queue.md)
 
