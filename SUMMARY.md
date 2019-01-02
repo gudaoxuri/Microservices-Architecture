@@ -32,4 +32,5 @@
 * [全局ID策略](microservices-technical-architecture/id-generated.md)
 * [顺序处理](microservices-technical-architecture/sequential-processing.md)
 * [延迟队列](microservices-technical-architecture/delay_queue.md)
+* [一致性与共识](microservices-technical-architecture/consistency-consensus.md)
 
