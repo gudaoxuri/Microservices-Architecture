@@ -16,6 +16,7 @@
 
 ## 微服务化之技术架构
 
+* [本章介绍](microservices-technical-architecture/introduction.md)
 * [服务怎么划分](microservices-technical-architecture/services-division.md)
 * [接口协议选择](microservices-technical-architecture/api-protocol-select.md)
 * [编制与协同设计](microservices-technical-architecture/services-invoke.md)
@@ -31,7 +32,9 @@
 * [全局ID策略](microservices-technical-architecture/id-generated.md)
 * [全局ID策略](microservices-technical-architecture/id-generated.md)
 * [顺序处理](microservices-technical-architecture/sequential-processing.md)
-* [延迟队列](microservices-technical-architecture/delay_queue.md)
+* [延迟队列](microservices-technical-architecture/delay-queue.md)
+* [流控处理](microservices-technical-architecture/flow-control.md)
 * [一致性与共识](microservices-technical-architecture/consistency-consensus.md)
 * [CP与AP的取舍](microservices-technical-architecture/cap.md)
+* [本章小结](microservices-technical-architecture/summary.md)
 
