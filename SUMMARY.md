@@ -37,3 +37,10 @@
 * [CP与AP的取舍](microservices-technical-architecture/cap.md)
 * [本章小结](microservices-technical-architecture/summary.md)
 
+## 微服务化之开发与测试
+
+* [本章介绍](microservices-development-and-testing/introduction.md)
+* [团队架构](microservices-development-and-testing/team-architecture.md)
+
+
+
