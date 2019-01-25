@@ -50,3 +50,4 @@
 ## 微服务化之运维与交付
 
 * [本章介绍](microservices-operation-delivery/introduction.md)
+* [自动化部署](microservices-operation-delivery/cd.md)
