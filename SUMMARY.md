@@ -51,3 +51,4 @@
 
 * [本章介绍](microservices-operation-delivery/introduction.md)
 * [自动化部署](microservices-operation-delivery/cd.md)
+* [服务监控](microservices-operation-delivery/monitor.md)
