@@ -54,3 +54,4 @@
 * [服务监控](microservices-operation-delivery/monitor.md)
 * [节点伸缩与故障转移](microservices-operation-delivery/node-scaling-and-failover.md)
 * [日志追踪与收集](microservices-operation-delivery/log-trace.md)
+* [SLO/SLA设定](microservices-operation-delivery/slo.md)
