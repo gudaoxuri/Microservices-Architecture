@@ -4,13 +4,13 @@
 
 ## 系统架构
 
-![单体架构组件设计](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/cdt-monolithic-component.png?sanitize=true)
+![单体架构组件设计](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/cdt-monolithic-component.png)
 
 此版本架构相当简单，使用单体架构，包含了提供贷款流程支撑的贷款管理功能、数据化风险控制的风控能力、用于第三方数据服务接入的三方服务管理以及基础的用户权限管理。
 
 服务端与终端统一通过Rest API交互。
 
-![单体架构部署设计](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/cdt-monolithic-deploy.png?sanitize=true)
+![单体架构部署设计](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/cdt-monolithic-deploy.png)
 
 由于是单体架构，部署上也很简单，启用多个功能相同的节点，使用Nginx或云厂商的SLB服务做负载均衡即可。
 

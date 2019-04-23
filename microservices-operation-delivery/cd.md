@@ -4,7 +4,7 @@
 
 所以微服务带来的服务数量提升及快速响应要求直接导致了运维体系的升级，成功的微服务架构必须有一套成熟的持续交付[CD](https://en.wikipedia.org/wiki/Continuous_delivery)流程。
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-cd1.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-cd1.png)
 
 如上图是一个比较完整的持续交付示例，发布的环境有多个，常规的我们会有开发、测试、UAT（用户验收）/预发、生产等，不同环境会有不同的流程。
 

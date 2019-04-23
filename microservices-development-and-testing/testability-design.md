@@ -2,7 +2,7 @@
 
 单元测试的重要性不言而喻，这是所有测试的第一道关，是所有测试的基础。在微服务下会有很多个服务，对各服务组件自身的测试也会很重要，组件测试会覆盖当前服务的所有对外接口实现对各个服务的功能边界验证。单元测试和组件测试可以很好地发现各单点或各服务的问题，但它无法检查系统的流程行为，而这就需要集成测试来验证组件之间的通信路径和交互，集成测试关注的一次请求或一个业务流程是否正常，集成测试多针对接口，某些情况下我们可能会特别关注用户交互，而UI测试（或End-To-End测试）可以比较好发现这类问题。
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-testability-design-test-pyramid.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-testability-design-test-pyramid.png)
 
 [测试金字塔](https://martinfowler.com/bliki/TestPyramid.html) 让我们可以直观了解到从单元测试到组件、集成测试再到UI测试，测试的价值逐级升高，但同时测试的难度、响应的速度也在逐级递增，最Top的UI测试最能直观的反馈问题，但此测试构建及维护难度很大，不是一般团队所能承受，反观单元测试却是最简单的可快速验证的，所以单元测试是基础，项目中必须予以重视。
 

@@ -112,11 +112,11 @@ build.git工程包含了所有工程源码，多用于项目的整体管理，�
 
 Git的Submodules对分支支持不是很友好，目前需要手工checkout到指定分支，我们可使用 `git submodule foreach` 来批量操作，如 `git submodule foreach 'git checkout master'` 。在子模块修改及多模块提交上可通过IDE以简化操作。以IDEA为例，如下图：
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-code-management-idea1.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-code-management-idea1.png)
 
 IDEA可以感知到项目中的所有Git工程并询问是否加入到版本控制中，上图<Project>为我们的build工程，其它的为各个子模块。在我们修改任何被纳入IDEA管理的子模块时都可以一并被提交，提交时还可以选择哪些子模块是否提交：
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-code-management-idea2.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-code-management-idea2.png)
 
 通过拆分各块到不同的版本库及使用Git的Submodules，我们可以很方便地管理众多的服务，非常推荐微服务团队采用，它所能带好的好处总结而言如下：
 

@@ -2,7 +2,7 @@
 
 单体架构（Monolithic Architecture）是一种将所有功能打包在一个容器中运行的设计风格，一个实例中集成了一个系统的所有功能。通过负载均衡软件/设备实现多实例调用。
 
-![&#x5355;&#x4F53;&#x67B6;&#x6784;&#x793A;&#x4F8B;](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/monolithic-architecture.png?sanitize=true)
+![&#x5355;&#x4F53;&#x67B6;&#x6784;&#x793A;&#x4F8B;](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/monolithic-architecture.png)
 
 上图为典型的单体架构示例，这种架构下我们多用Tomcat、JBoss或Weblogic做为服务容器，一个系统部署多个实例，负载均衡多通过随机或IP Hash等规则将终端请求路由到不同的实例。
 

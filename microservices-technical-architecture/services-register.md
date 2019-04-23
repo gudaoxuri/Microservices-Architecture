@@ -12,19 +12,19 @@
 
 **中心化的注册与调度服务**
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-register1.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-register1.png)
 
 服务的注册与调度完全交由中心化的注册调度中心完成，这其实就是上面Nginx的版本，它的优点是对各个服务本身没有侵入性，方便做服务Orchestration，问题上文也提到，每次调用都要走ESB，对性能一定影响。
 
 **对等网络，嵌入式注册与负载**
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-register2.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-register2.png)
 
 各个服务中内嵌了服务注册与负载调度，所以各个实例都是对等的，优点在于服务自治，无需另外的支撑服务，服务调用直连，速度快，存在的问题是对服务有侵入，不纯粹，并且需要为不同语言开发完整的注册调度实现，在通用化上有所欠缺，另外服务数量多时不利于做统一的管控。知名微服务框架Vertx（默认基于Hazelcast实现集群能力，后文会有介绍）就支持这一模式。
 
 **独立注册服务，嵌入式负载**
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-register3.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-register3.png)
 
 这一模式吸收了上两个模式的优点，它使用独立的、中心化的注册中心，而服务的调用则直接下放到各服务侧，实现点对点地调用。
 
@@ -42,7 +42,7 @@
 
 说到这，有读者会想到我们即要注册中心以方便管控又要避免嵌入式的调用负载对服务的侵入，那么是否可以实现类似下图的注册调用方式：
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-register4.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-register4.png)
 
 这里我们将调用负载从服务中独立出来，一个服务实例外挂一个对应的调用负载，所有注册调度相关的能力都由这个调用负载组件实现，这样我们的服务就很干净了。同时服务的实例与调用负载部署在同一节点中本身只有很少地网络开销，也可以兼顾到性能。
 

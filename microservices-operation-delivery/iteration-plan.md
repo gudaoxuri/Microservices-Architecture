@@ -7,7 +7,7 @@
 这是最简单干脆的方案，如果可行必然是首选。
 实现上一般分两步，如下图：
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-iteration-plan1.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-iteration-plan1.png)
 
 先确定重构开始的时间点及这个点下老版本的功能（重构前的功能），接下来新版本的功能开发会对标这个功能列表进行，同期老版本会限制性接入一些重要或紧急的需求，完成重构前的功能开发及测试后再花些时间把重构后的增量功能补全，注意这个时期老版本还是可能会有需求接入，但人力会向新版本倾斜，在实现新版本功能完全覆盖老版本并测试通过后重构才算完成，新版本上线，老版本下线。
 

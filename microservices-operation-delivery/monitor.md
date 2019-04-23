@@ -49,6 +49,6 @@
 
 特定框架也会有其自己生态下的监控工具，比如Spring Cloud的Spring Boot Admin，Dubbo的Dubbo Admin，但这些多是补充者的角色，无法替代主流运维工具。
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-montior1.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-montior1.png)
 
 如上图，是Spring Boot Admin的示例，它可以监控各服务的存活及健康情况，各个服务的详细信息，诸如JVM、访问日志、统计指标、环境配置、线程、实时接口调用、熔断等，另外还可以动态调整日志级别以快速排查问题。

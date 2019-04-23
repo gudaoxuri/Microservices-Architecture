@@ -24,7 +24,7 @@
 说到一致性协议，那必须要讲[Paxos](https://en.wikipedia.org/wiki/Paxos_(computer_science))，这是公认的最伟大的分布式一致算法，可能没有之一。
 Paxos协议见于Leslie Lamport在1998年发的[《The Part-Time Parliament》](http://lamport.azurewebsites.net/pubs/pubs.html#lamport-paxos) ，在此论文中它假设了一个叫Paxos的小岛，岛上的各项决定要经议会同意，议会成员都是兼职的，议员的核心角色分为提案者（Proposers）、表决/投票者（Acceptors）。Proposer 提出提案（Proposal），提案信息包括提案编号和提议的值（Value），Acceptor 收到提案后可以接受（Accept）提案，若提案获得多数 Acceptors 的接受，则称该提案被批准（Chosen）。
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-consistency-consensus1.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-consistency-consensus1.png)
 
 > 图片来源[Implementing Replicated Logs with Paxos”](https://ramcloud.stanford.edu/~ongaro/userstudy/paxos.pdf)
 

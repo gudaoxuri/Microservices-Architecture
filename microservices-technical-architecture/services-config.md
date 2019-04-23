@@ -2,13 +2,13 @@
 
 从单体架构与SOA转向微服务，配置中心这个服务可能会有些陌生，尤其是单体架构，几乎不存在这样的需求。
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-config1.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-config1.png)
 
 回顾我们以前变更配置的方式：修改各节点的配置文件，如果有多实例的话需要一个个节点地修改，修改后分批次重启或重载服务。这一做法在之前的架构中没有太大的问题，但考虑我们车贷通的场景，车贷通只是个中小型系统，它已有30个左右的服务，如果加上HA（高可用）服务实例起码需要*2，即60多个服务实例，如果我们需要修改较为全局性的诸如数据库连接地址那将是个浩大的工程。
 
 既然这样，那我们自然而然会想到将所有配置放到一个地方，比如最简单的，使用NAS共享存储，然后将配置分割成全局配置和服务自身的配置，如下图：
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-config2.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-config2.png)
 
 这一做法解决了集中化配置的问题，但如果NAS故障了呢？这个好办，我们可以对NAS做集群化或是使用云厂商的对象存储服务，而这就是配置中心的雏形，当然在生产中我们还有很多其它的要求。
 
@@ -20,7 +20,7 @@
 
 配置中心的配置要有依赖继承关系，要分可环境或场景，比如常规的要有针对开发、测试、预发、生产等环境的特殊配置，也要有能针对诸如双11、618大促等活动的特殊配置，微服务下每个服务都有自身的配置，但也有公共的配置，公共配置应该可以统一设置，在获取某个微服务配置时配置中心会自动合并要求环境及场景下的公共配置、服务自身配置。
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-config3.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-config3.png)
 
 我们再考虑下这么多服务，难道改配置后需要一个个实例地重启，显然这是不合适的，配置中心要求可以动态地刷新并应用新的服务配置，并且要支持分批次或灰度发布，即可以按指定的策略先刷新一批服务实例，如没有问题后再全网刷新，当然这两个特性都需要服务自身提供相应的支持，比如配置刷新，一般会在服务中加入配置中心的SDK，SDK收到新配置后通知服务实现重载配置，但诸如数据库连接池等有缓存设计的功能需要服务自身处理配置的更新逻辑，分批次或灰度发布可以是按随机百分比更新，也可以按高级规则处理，后者要求我们的服务实例能给出对应的标签，比如我们的路由策略是按地域分发的，那么对应的不同服务实例可以带上地域标签，这时就可以按地域实现批次或灰度更新。
 

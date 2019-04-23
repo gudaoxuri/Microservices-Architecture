@@ -26,11 +26,11 @@
 
 整体流程可分为：贷款申请及贷后监控两大块，下图是贷款申请的精简流程：
 
-![申请流程](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/project-apply-flow.png?sanitize=true)
+![申请流程](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/project-apply-flow.png)
 
 首先，顾客进店看车，销售顾问了解顾客意向后向其推荐车贷通APP，顾客下载车贷通-用户版并完成注册。首次使用时要求顾客先完善个人信息。
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/project-sketch1.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/project-sketch1.png)
 
 > 📖 用户的信用数据哪来的？
 >  信用贷款，尤其是车贷这种大额贷款授信时用户数据的完整性、准确性至关重要，以车贷通为例：
@@ -52,7 +52,7 @@
 
 贷款申请通过“客户身份证”与顾客信息关联。由于要求查询用户信用，因此此处需要上传用户征信授权资料。
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/project-sketch2.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/project-sketch2.png)
 
 提交之后销售顾问可以在订单Tab中查看或操作自己所属的贷款订单。
 
@@ -60,11 +60,11 @@
 
 通过风控审核完成后会通知顾客申请结果，顾客可以查看结果，如果对匹配的方案不满意可以选择系统给出的备选方案或完善信息后重新申请。
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/project-sketch3.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/project-sketch3.png)
 
 顾客确认方案后销售顾问操作生成贷款合同。
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/project-sketch4.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/project-sketch4.png)
 
 合同生成调用的是第三方电子签名服务，确保有法律效力，合同生成后顾客需要完成活体检测，通过后车贷通后台进行放款人工审核以最后确认申请是否通过。
 
@@ -74,7 +74,7 @@
 
 贷后监控相对而言逻辑比较简单，如下图：
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/project-post-loan-flow.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/project-post-loan-flow.png)
 
 车贷通系统定时触发贷后巡检，巡检会根据顾客APP更新的数据（如果没有卸载的话）、还款记录、车辆GPS数据、三方征信报告更新数据等判断是否存在风险，进而做简单的短信/电话提醒或是交由三方公司做委外催收，用户的还款及系统的定时触发器会触发更新还款计划中的逾期罚息金额。
 

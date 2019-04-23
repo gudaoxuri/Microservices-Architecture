@@ -4,7 +4,7 @@
 
 >🔆 鲁棒性（Robustness）意为健壮、强壮，在计算中指的是系统的健壮性，用于表示容忍可能影响系统功能的扰动的能力。[详见此处](https://en.wikipedia.org/wiki/Robustness)
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-circuit1.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-circuit1.png)
 
 上图是服务雪崩的示例，假设我们的系统由5个服务组成，服务1调用服务2、3，服务3调用服务4、5，但由于某些原因（到达性能极限、未知bug、网络分区等）服务4访问很慢，这时如果没有服务的熔断与降级那么调用者服务3会因为服务4异常而积累过多请求导致产生大量等待的线程（BIO模型），进而服务3也会引发访问慢或中止服务的问题，对其调用服务1也会重复服务3的问题，如此一来，由服务4本身的问题而引发依赖服务的整个链路都出问题，这就是典型的服务雪崩效应。
 
@@ -28,7 +28,7 @@
 
 下面举个例子进一步说明熔断与降级，对于数据查询场景我们可以会引入ES以提升查询的性能降低数据库的压力，这是正常的逻辑，但如果ES查询异常时要确保服务可用就需要走降级灾备方案，灾备方案1是使用资源有限定的只读账号查询生产数据库，如果达到限定值为不影响其它业务只能进入灾备方案2，灾备方案2查询的是备份库，备份库在性能、数据实时性上都有损失，但起码可以让服务尽可能地可用（当然要视具体场景而言）。
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-circuit2.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-services-circuit2.png)
 
 熔断器要求可以根据服务的情况自动升降级。一个标准的熔断器一般都包含三个状态：
 

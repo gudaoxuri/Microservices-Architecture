@@ -4,7 +4,7 @@
 
 在分布式环境下之所有强调幂等是由于对通信链路的不信任，我们的请求可能由于网络问题而出错进而需要做重试，一般的网络通讯类库都提供重试机制并且默认启用重试功能，而如果我们对应的接口没有做请求去重就可以导致重复处理引发数据错误，所以在分布式系统中接口的幂等性非常重要。一个非常典型的场景如下：
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-idempotent1.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-idempotent1.png)
 
 服务A请求服务B完成某业务处理，请求已发到服务B并且服务B完成了业务处理，但在响应处理完成时由于网络原因未能发送到服务A或是响应超时触发服务A放弃等待等原因导致服务A误认为请求失败，服务A进行了重试，此时就引发了业务处理异常。
 
@@ -17,7 +17,7 @@
 
 上面的方案都是有场景限定的，更通用的做法如下图所示：
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-idempotent2.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-idempotent2.png)
 
 基本流程是请求执行业务前先判断请求是否存在，如果存在则返回错误，否则写入请求并执行业务处理，处理完成后更新请求的状态并返回业务处理结果，如果业务处理错误可以选择删除对应的请求以便进行重试。这一流程要求请求必须有可区分是否是重试的标识，并且对业务处理的前置判断和后置更新最好在框架层面实现以对业务操作透明化，做到最小化的业务逻辑侵入。
 

@@ -4,11 +4,11 @@
 
 当然如果我们自己实现这些操作会很繁琐，好在我现成的框架可用，其中最著名的当属[Zipkin](https://zipkin.io/)，这是Twitter基于Google Dapper思想实现的开源日志追踪框架，它由采集器、存储、搜索及UI四个组件组成，采集器支持多种语言，官方支持的Java采集器是[brave](https://github.com/openzipkin/brave)，存储支持Cassandra、MySQL、ES等，下图是它的UI，可以很方便、直观地查看调用情况（在线尝试：http://docssleuth-zipkin-server.cfapps.io/zipkin/ ）。
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-log-trace1.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-log-trace1.png)
 
 Spring Cloud Sleuth是Spring Cloud体系下的日志追踪服务，也是对Google Dapper的模仿，它实现了Zipkin的采集器，可以与Zipkin配合使用。Sleuth官方有一张图可以很好说明其流程。
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-log-trace2.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-log-trace2.png)
 
 所有Google Dapper思想的日志追踪服务都有Trace与Span，Trace是指一次完整的调用，Tarce_Id在一次调用中唯一，可以通过它观察完整的链路，Span是调用中的每个节点请求，通过它可以观察某次调用各个节点请求的情况，如请求时间、响应时长等。
 

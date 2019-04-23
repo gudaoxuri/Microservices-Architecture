@@ -136,11 +136,11 @@ private ApiInfo apiInfo() {
 
 这样我们就可以通过 /swagger-ui.html 来访问了，示例如下：
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-api-management1.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-api-management1.png)
 
 我们可以直接在界面上进行测试，如：
 
-![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-api-management2.png?sanitize=true)
+![](https://raw.githubusercontent.com/gudaoxuri/Microservices-Architecture/master/resources/images/ms-api-management2.png)
 
 
 
